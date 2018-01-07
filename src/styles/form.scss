@@ -1,0 +1,122 @@
+.formWrapper {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 565px;
+    height: 630px;
+    padding: 40px 88px 120px 88px;
+    box-sizing: border-box;
+    background-color: $color-grey-semi;
+    border: 1px solid $color-grey-dark;
+    border-radius: 3px;
+
+    form {
+        input {
+            width: 100%;
+
+            &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+                font-size: 16px;
+                color: $color-grey-ultra-dark;
+            }
+            &::-moz-placeholder { /* Firefox 19+ */
+                font-size: 16px;
+                color: $color-grey-ultra-dark;
+            }
+            &:-ms-input-placeholder { /* IE 10+ */
+                font-size: 16px;
+                color: $color-grey-ultra-dark;
+            }
+            &:-moz-placeholder { /* Firefox 18- */
+                font-size: 16px;
+                color: $color-grey-ultra-dark;
+            }
+
+            &.ng-invalid.ng-touched.ng-dirty, &.invalid-input {
+                border: 2px solid $color-red;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        input, select {
+            display: inline-block;
+            height: 55px;
+            padding-left: 15px;
+            font-size: 16px;
+            border: 1px solid $color-grey-dark;
+            box-sizing: border-box;
+        }
+
+        select {
+            float: left;
+            width: 28%;
+        }
+
+        button {
+            width: 100%;
+            height: 62px;
+            margin-top: 45px;
+            font-size: 22px;
+            color: $color-white;
+            background-color: $color-green;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 6px 2px -2px $color-green-lighter;
+
+            &:active {
+                margin-top: 47px;
+            }
+        }
+
+        label {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+
+            &[for=firstName], &[for=lastName] {
+                width: 48%;
+            }
+
+            &[for=firstName] {
+                float: left;
+            }
+
+            &[for=lastName], &[for=phone] {
+                float: right;
+            }
+
+            &[for=phone] {
+                width: 68%;
+            }
+
+            .error-message {
+                position: absolute;
+                    top: 57px;
+                    left: 15px;
+                color: $color-red;
+            }
+        }
+
+        label:not(:nth-child(-n+2)), select {
+            margin-top: 25px;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 90%;
+        height: 700px;
+
+        form label, select {
+            width: 100% !important;
+        }
+
+        form label:nth-child(2), select {
+            margin-top: 25px;
+        }
+    }
+}

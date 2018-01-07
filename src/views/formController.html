@@ -1,0 +1,58 @@
+<div class="formWrapper">
+    <form name="registrationForm" novalidate ng-submit="submitForm()">
+        <label for="firstName">
+            <input type="text" name="firstName" id="firstName" placeholder="First Name" ng-model="registration.firstName" ng-required="true" />
+            <div class="error-message" ng-show="registrationForm.firstName.$touched && registrationForm.firstName.$invalid && registrationForm.firstName.$dirty">
+                First Name Required!
+            </div>
+        </label>
+        <label for="lastName">
+            <input type="text" name="lastName" id="lastName" placeholder="Last Name" ng-model="registration.lastName" ng-required="true" />
+            <div class="error-message" ng-show="registrationForm.lastName.$touched && registrationForm.lastName.$invalid && registrationForm.lastName.$dirty">
+                Last Name Required!
+            </div>
+        </label>
+        <label for="email">
+            <input type="email" name="email" id="email" placeholder="Email" ng-model="registration.email" ng-required="true"
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" />
+            <div class="error-message" ng-show="registrationForm.email.$touched && registrationForm.email.$invalid && registrationForm.email.$dirty">
+                Valid Email Required!
+            </div>
+        </label>
+        <select ng-show="countries.length" name="phoneCode" ng-model="registration.phoneCode">
+            <option ng-repeat="country in countries" value="{{country.phoneCode}}">{{country.phoneCode}}</option>
+        </select>
+        <select ng-show="!countries.length" ng-focus="fetchCountries()">
+            <option value="" selected="selected">Code</option>
+        </select>
+        <label for="phone">
+            <input type="number" name="phone" id="phone" placeholder="Phone" ng-model="registration.phone" ng-required="true" />
+            <div class="error-message" ng-show="registrationForm.phone.$touched && registrationForm.phone.$invalid && registrationForm.phone.$dirty">
+                Valid Phone Required!
+            </div>
+        </label>
+        <label for="password">
+            <input type="password" name="password" id="password" minlength="6" placeholder="Password"
+                   ng-model="registration.password"
+                   ng-required="true" />
+            <div class="error-message" ng-show="registrationForm.password.$touched && registrationForm.password.$invalid && registrationForm.password.$dirty">
+                Valid Password Required!
+            </div>
+        </label>
+        <label for="retypePassword">
+            <input type="password" name="retypePassword" id="retypePassword" minlength="6" placeholder="Retype Password"
+                   ng-model="registration.retypePassword"
+                   ng-class="{'invalid-input': (registration.retypePassword !== registration.password)
+                   && registrationForm.retypePassword.$touched && registrationForm.retypePassword.$dirty}"
+                   ng-required="true" />
+            <div class="error-message"
+                 ng-show="(registration.retypePassword !== registration.password)
+                 && registrationForm.retypePassword.$touched && registrationForm.retypePassword.$dirty">
+                Repeat Password!
+            </div>
+        </label>
+        <button type="submit" class="btn-behaviour"
+                ng-disabled="!registrationForm.$valid || (registration.retypePassword !== registration.password)"
+                >I'M DONE</button>
+    </form>
+</div>

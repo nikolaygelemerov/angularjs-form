@@ -1,0 +1,15 @@
+.btn-behaviour:not([disabled]) {
+    &:hover {
+        background-color: $color-green-light;
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.btn-behaviour[disabled=disabled] {
+    background-color: $color-grey-dark;
+    box-shadow: none;
+}
