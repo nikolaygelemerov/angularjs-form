@@ -36,7 +36,7 @@
                    ng-model="registration.password"
                    ng-required="true" />
             <div class="error-message" ng-show="registrationForm.password.$touched && registrationForm.password.$invalid && registrationForm.password.$dirty">
-                Valid Password Required!
+                Password should be at least 7 characters long!
             </div>
         </label>
         <label for="retypePassword">
@@ -46,9 +46,10 @@
                    && registrationForm.retypePassword.$touched && registrationForm.retypePassword.$dirty}"
                    ng-required="true" />
             <div class="error-message"
-                 ng-show="(registration.retypePassword !== registration.password)
-                 && registrationForm.retypePassword.$touched && registrationForm.retypePassword.$dirty">
-                Repeat Password!
+                 ng-show="(registration.retypePassword !== registration.password || registrationForm.retypePassword.$invalid)
+                 && registrationForm.retypePassword.$touched
+                 && registrationForm.retypePassword.$dirty">
+                Repeat Valid Password!
             </div>
         </label>
         <button type="submit" class="btn-behaviour"
