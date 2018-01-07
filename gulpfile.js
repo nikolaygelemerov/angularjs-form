@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const concat = require('gulp-concat');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass');
+const modRewrite = require('connect-modrewrite');
 
 const scripts = require('./scripts');
 const styles = require('./styles');
@@ -42,8 +43,15 @@ gulp.task('build', function() {
 gulp.task('browser-sync', function() {
     browserSync.init(null, {
         open: false,
+        startPath: '/index.html',
         server: {
-            baseDir: 'dist'
+            baseDir: 'dist',
+            middleware: [
+                // proxyMiddleware,
+                modRewrite([
+                    '!\\.\\w+$ /index.html [L]'
+                ])
+            ]
         }
     });
 });
